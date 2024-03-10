@@ -1,0 +1,19 @@
+
+1-dlw2ty ana 3awz a5ly ale app btay my3ml4 lister 8er lm ale app y3ml conection by db 
+/////////////// connection.once  \\\\\\\\\\\\\\
+hna deh function 4bh ale event we bdeha event we btrg3 callback function  
+mongoose.connection.once("open", ()=>{
+  console.log("Connect to Mongoose server ...")
+server.listen(port, () => {
+  console.log(`Starting server on port ${port}`);
+});})
+
+// hna deh 4bh ale event lw 7sl error h3ml eh
+// hna on deh 4bh ale emit 
+mongoose.connection.on("error",(err)=>{
+  console.log(`Error: ${err}`);
+})
+
+
+///////////////////////////////////////////////////////////////
+2-

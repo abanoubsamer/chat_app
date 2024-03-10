@@ -1,0 +1,8 @@
+
+// cors dh modules bt5ly nas mo3yna bs ale momkn t3ml 3lak api we ta5d ale data mn 3ndk
+// hna ana bolh lu ale app ast3nmly ale cors 3la anha function we bta5d obj we gwah optional
+1 - origin dh ale nas ale msmo7lha td5l lw oltloh true yn3e kolh hyd5l 3ady 
+lakn ana hdef ale ulr ale 3awzoh bs yd5ol fe 4kl array 
+app.use(cors({
+  origin:["http://logicalhost:5000"],
+}))

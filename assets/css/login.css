@@ -1,0 +1,152 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    
+    margin: auto;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2f9b56;
+   
+}
+.phonecounter {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#timer {
+    margin-top: 20px;
+    font-size: 18px;
+    color: red; /* Example color */
+}
+.form{
+    position: absolute;
+    max-width: 430px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background: #FFF;
+}
+
+.forms.show-signup .form.login{
+    opacity: 0;
+    pointer-events: none;
+}
+header{
+    font-size: 28px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+}
+form{
+    margin-top: 30px;
+}
+.form .field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+.field input,
+.field button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+.field input{
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
+}
+.field input:focus{
+    border-bottom-width: 2px;
+}
+
+.whatsapp-icon {
+    width: 20%;
+    color: #25d366; /* WhatsApp green color */
+  
+    top: 50%;
+    left: 50%;
+    transform: translate(200%, -20%);
+}
+.eye-icon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+.field button{
+    color: #fff;
+    background-color: #2f9b56;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.field button:hover{
+    background-color: #2f7749;
+}
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+.center {
+    text-align: center;
+  }
+  
+  .verification {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .otp-input-fields {
+    margin: auto;
+    /* background-color: red; */
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 30px;
+  }
+  
+  .otp_num {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #2f8f1f;
+    font-size: 14px;
+  }
+  
+  .otp_num::-webkit-inner-spin-button,
+  .otp_num::-webkit-outer-spin-button {
+    appearance: none;
+  }
+  
+  .success,
+  .error {
+    display: none;
+    text-align: center;
+  }

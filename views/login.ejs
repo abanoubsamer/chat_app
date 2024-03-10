@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/login.css">                       
+</head>
+<body>
+    <section class="container forms">
+        <div class="form login">
+            <div class="form-content">
+                <img src="images/whatsapp.png" class="whatsapp-icon">
+                <header>WhatsApp</header>
+                <header>Sign in</header>
+                <div class="phonecounter"></div> <!-- corrected typo -->
+                <div id="timer"></div>
+                <form>
+                    <div class="field input-field">
+                        <input type="text" placeholder="Email" class="input" id="email" required>
+                    </div>
+                    <div class="field input-field" style="display: block;">
+                        <input type="text" placeholder="+20" class="input" name="phone" id="phoneInput">
+                    </div>
+                
+                    <div class="verification">
+                        <div class="otp-input-fields" style="display: none;">
+                            <input type="number" class="otp_num otp_num_1" maxlength="1" id="otpInput">
+                            <input type="number" class="otp_num otp_num_2" maxlength="1" id="otpInput">
+                            <input type="number" class="otp_num otp_num_3" maxlength="1" id="otpInput">
+                            <input type="number" class="otp_num otp_num_4" maxlength="1" id="otpInput">
+                        </div>
+                    </div>
+                    <div class="field button-field">
+                        <button class="login" id="nextButton">Next</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div> <!-- added closing div tag -->
+    </section>
+
+    <!-- JavaScript -->
+   <script src="/js/login.js"></script> 
+</body>
+</html>
