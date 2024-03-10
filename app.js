@@ -22,7 +22,7 @@ const CorsOption=require("./config/CorsOption");
 //1- lazm awl 7aga t3ml connect db
 connectDB.connectDB();
 //2-lazm tany 7aga t3ml cors option
-app.use(cors(CorsOption))
+app.use(cors("*"))
 //3-
 app.use(cookiesParser());
 app.use(express.json())

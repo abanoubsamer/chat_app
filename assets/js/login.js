@@ -4,9 +4,9 @@ let=Otp=document.getElementById("otpInput")
 let Email=document.getElementById("email")
 let Phone=document.getElementById("phoneInput")
 let otpInputs = document.querySelectorAll('.otp_num');
+let btnsingin=document.getElementById("nextButton")
 
-
-document.getElementById("nextButton").addEventListener("click", function(event) {
+    btnsingin.addEventListener("click", function(event) {
     verifiyOtp();
    if (Otp.parentNode.style.display === "none")
     {
@@ -19,7 +19,7 @@ document.getElementById("nextButton").addEventListener("click", function(event) 
      
        document.querySelector('.phonecounter').innerHTML +=email;
        Email.parentNode.style.display = "none"; // Clearing the input field
-      
+       btnsingin.innerHTML="Next"
         ////////////////////////////////////////////////////////////////////////////////////////////////
          timer();
         /////////////////////////////////////////////////////////////////
@@ -33,7 +33,9 @@ document.getElementById("nextButton").addEventListener("click", function(event) 
       }
       else{alert("Invalid Email Address")}
       }
-  else{Postopt();}
+       else{
+      Postopt();
+    }
  
    
 }
@@ -45,7 +47,7 @@ function PostData()
 
       // Send data to backend
       
-          fetch("http://localhost:3000/Signin", {
+          fetch("http://localhost:3000/Authotp", {
           method: "POST",
           body: JSON.stringify({
               email:Email.value,
@@ -69,9 +71,11 @@ function PostData()
 ////////////////////////////////////////////////////////////////
 
 Postopt=()=>{
-    fetch("http://localhost:3000/otp", {
+    fetch("http://localhost:3000/Signin", {
         method: "POST",
         body: JSON.stringify({
+            email:Email.value,
+            phone:Phone.value,
             otp:Array.from(otpInputs).map(input => +input.value).join('')
         }) ,
         headers: {
@@ -79,21 +83,19 @@ Postopt=()=>{
     }
     })
     .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            // Parse the JSON response
             return response.json();
-        }).then(data => {
+        })
+     .then(data => {
+       
            if (data.success) {
             window.location.href = "/"; // Assuming "/home" is the route for the home page
         } else {
-            console.log("OTP verification failed");
+            console.log(data.message);
       }
     })
-    .catch(error => {
-        console.error("Error sending data:", error);
-    });
+     .catch(error => {
+         console.error("Error sending data:", error);
+     });
 }
 
 function verifiyOtp(){

@@ -1,5 +1,5 @@
 
-const AllowOrigins=["http://logicalhost:5000"];
+const AllowOrigins=["*"];
 
 
 

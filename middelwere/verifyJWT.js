@@ -5,7 +5,7 @@ exports.verfiyjwt = (req,res,next)=>{
 const authHandler=req.headers.authorization || req.headers.Authorization // Bearer token
 if(!authHandler?.startsWith("Bearer ")){
     return res.status(401).json({message:"user Unauthorized"})
-}                                   //   0        1 
+}                                       //   0        1 
 const token = authHandler.split(" ")[1]//["Bearer","token"]
 jwt.verify(token,process.env.ACCESS_TOKEN_SECRET_KET,(err,decoded)=>{
 if(err){ return res.status(403).json({message:"Forbidden"})}

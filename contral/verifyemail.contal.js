@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const otpgenerator = require('otp-generator');
 require('dotenv').config(); // For loading environment variables from .env file
-const OTP = otpgenerator.generate(4, { digits: true, upperCaseAlphabets:false,lowerCaseAlphabets:false, specialChars: false });
+let OTP;  
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -11,6 +11,7 @@ const transporter = nodemailer.createTransport({
   });
 
 exports.sendotp=(req,res,next)=>{
+    OTP=otpgenerator.generate(4, { digits: true, upperCaseAlphabets:false,lowerCaseAlphabets:false, specialChars: false });
     console.log(OTP)
     console.log(req.body);
     // Prepare the email message
@@ -31,6 +32,9 @@ exports.sendotp=(req,res,next)=>{
     //      res.status(200).send("OTP sent successfully");
     //  }
     //  });
+
+    res.status(200).send("OTP sent successfully");
+
 }
 
 exports.verfyotp=(req,res,next)=>{
@@ -38,10 +42,11 @@ exports.verfyotp=(req,res,next)=>{
    console.log(req.body.otp);
    if (req.body.otp === OTP) {
     console.log("Verify");
-    res.json({ success: true });
+    next();
+   // res.json({ success: true });
 } else {
     // Handle case when OTP does not match
-    res.status(400).send("Invalid OTP");
+    res.status(400).json({message:"Invalid OTP"});
 }
 
 }

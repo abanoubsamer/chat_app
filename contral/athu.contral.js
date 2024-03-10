@@ -4,18 +4,21 @@ const jwt =require("jsonwebtoken")
 
 const  bcrypt= require("bcrypt");
 exports.register= async(req,res,next)=>{
+
      //get data from frontend
-    const {name,email,phonenumber,image,about}=req.body
+     // const name=name.req.body;
+    const email=req.body.email;
+    const phonenumber=req.body.phone;
+    //const image=image.req.body;
+    //const about=about.req.body;
         // validation data
         if(!email || !phonenumber)
         {
+           
             return res.status(400).json({message:"requerd  email ond  phonenumber"})
         }
         // check user is existing
-        const foundUser=await Usermodul.User.findOne({
-            email,
-            phonenumber,
-        }).exec()
+        const foundUser=await Usermodul.User.findOne({ $or: [{ email: email }, { phonenumber: phonenumber }] }).exec()
         if(foundUser)
         {
             return res.status(401).json({message:"user already registered"})
@@ -24,23 +27,23 @@ exports.register= async(req,res,next)=>{
         const hashPhonenumber=await bcrypt.hash(phonenumber,10);
         // create new user
         const user= await Usermodul.User.create({
-                    name,
+                  //  name,
                     email,
                     phonenumber:hashPhonenumber,
-                    image,
-                    about
+                   // image,
+                   // about
                     }) 
        // generate token from user
         const accessToken = jwt.sign({
             userinfo: {
-         id: user._id,
+            id: user._id,
             },
         },process.env.ACCESS_TOKEN_SECRET_KET,{expiresIn: "15m"},)
 
           // generate  refresh token from user
           const refreshToken = jwt.sign({
             userinfo: {
-                id: user._id,
+            id: user._id,
                    },
           },process.env.REFESH_TOKEN_SECRER,{expiresIn: "1h"},)
 
@@ -51,10 +54,12 @@ exports.register= async(req,res,next)=>{
             sameSit:"None", // hna ana lw 3nal syb domin ly ale app  bta3y bhwa kdh hyb3t ly ale ale sf7ten ale token //fe 7aga tany asmha strict hna hwa hyb3th ly ale domin ale aslyy bs
              maxAge: 60*60*1000 // hna lazm ale cookie tkon lyha expired zy ale refrash tokin 
         })
- 
+       
         /// send tokens
         res.json({
+            refreshToken,
             accessToken,
+            success: true ,
             phone:user.phonenumber,
             name:user.name,
             email:user.email,
